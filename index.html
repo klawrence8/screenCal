@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <title>Screen Calendar Application</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="https://unpkg.com/basscss@8.0.2/css/basscss.min.css" rel="stylesheet">
+        <link rel=stylesheet href="https://s3-us-west-2.amazonaws.com/colors-css/2.2.0/colors.min.css">
+    </head>
+    <body class="bg-silver black" style="font-family: 'avenir next', avenir, sans-serif;">
+
+        <div border="0" padding="10">
+            <img src="images/screencal.gif" width=245 height=230 alt="Buster Keaton">
+            <img class="xs-hide" width=245 height=230 src="images/buster2.gif" alt="Buster Keaton">
+            <img class="sm-hide xs-hide" width=245 height=230 src="images/buster3.gif" alt="Buster Keaton">
+            <img class="md-hide sm-hide xs-hide" width=245 height=230 src="images/buster4.gif" alt="Buster Keaton">
+            <img class="lg-hide md-hide sm-hide xs-hide" width=245 height=230 src="images/buster4.gif" alt="Buster Keaton">
+            <h1 class="caps">screencal</h1>
+        </div>
+        <div>
+            <p> here + now you can jump into a screening
+            <br> <span class="gray"> where are you in space + time ?</span></br>
+            where would you like to be</p>
+        </div>
+        <div class="clearfix">
+            <div class="col col-6">
+                <h2 class="caps">Select a Time</h2>
+                <input type="date" name="screenDay">
+                <input type="time" name="screenTime">
+            </div>
+            <div class="col col-6">
+                <h2 class="caps">Filter by Space</h2>
+                <select name="venues">
+                    <!TODO--Make this dynamic-->
+                    <option value="alamo">Alamo Drafthouse Downtown Brooklyn</option>
+                    <option value="bam">BAMcinématek</option>
+                    <option value="filmForum">Film Forum</option>
+                    <option value="filmNoir">Film Noir Cinema</option>
+                    <option value="LicolnCenter">Film Society of Lincoln Center</option>
+                    <option value="ifc">IFC Center</option>
+                    <option value="japan">Japan Society</option>
+                    <!-- <option value="Kings Theatre"></option> -->
+                    <!-- <option value="Knockdown Center"></option> -->
+                    <option value="lightIndustry">Light Industry</option>
+                    <option value="metrograph">Metrograph</option>
+                    <option value="moma">Museum of Modern Art</option>
+                    <option value="momi">Museum of the Moving Image</option>
+                    <option value="nitehawk">Nitehawk Cinema</option>
+                    <option value="quad">Quad Cinema</option>
+                    <option value="rooftop">Rooftop Films</option>
+                    <option value="spectacle">Spectacle</option>
+                    <option value="wyndicated">Syndicated</option>
+                    <option value="videology">Videology</option>
+                    <option value="villageEast">Village East Cinema</option>
+                </select>
+            </div>
+        </div>
+        <div>
+            <h6 class="caps gray mt4">Available Screenings</h6>
+        </div>
+
+        <div>
+            <h3 class="caps red">VENUE</h3>
+            <p class="caps mt3">MOVIE TITLE</p>
+            <ul class="list-reset">
+                <li><h5 class="caps">AUTEUR : YEAR</h5></li>
+                <li>Details about the film and/or venue and/or screening</li>
+                <li class="mt1">
+                    <ul class="list-reset">
+                        <li class="inline-block mr1">00:00</li>
+                        <li class="inline-block mr1">01:00</li>
+                        <li class="inline-block mr1">11:15</li>
+                        <li class="inline-block mr1">18:00</li>
+                        <li class="inline-block mr1">22:30</li>
+                    </ul>
+            </ul>
+        </div>
+
+    </body>
+</html>
