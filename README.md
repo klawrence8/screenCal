@@ -1,9 +1,9 @@
 # screenCal
-My mashup screening scraper + calendar web app. Built for the purpose of studying event-driven web dev basics by implementing a Node.js and javascript prototype and routinely refactoring it.
+My ongoing mashup screening scraper + calendar program. This web app will help you find underground screenings of foreign arthouse, indie newcomers, or forgotten gems from the golden age on a silver screen near you! Built for the purpose of studying event-driven web dev basics by implementing a Node.js and javascript prototype and routinely refactoring it.
 
 ## Getting Started
 
-Clone the repo--open index.html to see what it's all about
+Clone the repo--Open index.html in your favorite browser to see what it's all about
 
 ### Prerequisites
 
@@ -36,5 +36,5 @@ TODO: Coming soon!
 
 ## Acknowledgments
 
-* Thank you ScreenSlate for compiling daily screenings and all of their info into one-easily scraped website.
+* Thank you ScreenSlate for compiling nyc screenings into one easily-scraped website
 * Inspired by my brother
