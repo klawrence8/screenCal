@@ -5,6 +5,10 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link href="https://unpkg.com/basscss@8.0.2/css/basscss.min.css" rel="stylesheet">
         <link rel=stylesheet href="https://s3-us-west-2.amazonaws.com/colors-css/2.2.0/colors.min.css">
+        <script
+            src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+            integrity="sha256-3edrmyuQ0w65f8gfBsqowzjJe2iM6n0nKciPUp8y+7E="
+            crossorigin="anonymous"></script>
     </head>
     <body class="bg-silver black" style="font-family: 'avenir next', avenir, sans-serif;">
 
@@ -19,19 +23,21 @@
         <div>
             <p> here + now you can jump into a screening
             <br> <span class="gray"> where are you in space + time ?</span></br>
-            where would you like to be</p>
+            where would you like to be. . .</p>
         </div>
         <div class="clearfix">
             <div class="col col-6">
                 <h2 class="caps">Select a Time</h2>
-                <input type="date" name="screenDay">
-                <input type="time" name="screenTime">
+                <input id="datePicker" class="border--black" type="date" name="screenDay" style="font-family: 'avenir next', avenir, sans-serif;">
+                <input class="border--black" type="time" name="screenTime" style="font-family: 'avenir next', avenir, sans-serif;">
             </div>
             <div class="col col-6">
                 <h2 class="caps">Filter by Space</h2>
-                <select name="venues">
+                <select id="venuePicker" name="venues" class="border--black" style="border: 0; outline-offset:-1px; outline: 2px inset black; font-family: 'avenir next', avenir, sans-serif;">
                     <!TODO--Make this dynamic-->
+                    <option value="all" selected>All Venues</option>
                     <option value="alamo">Alamo Drafthouse Downtown Brooklyn</option>
+                    <option value="afa">Anthology Film Archives</option>
                     <option value="bam">BAMcinématek</option>
                     <option value="filmForum">Film Forum</option>
                     <option value="filmNoir">Film Noir Cinema</option>
@@ -54,26 +60,44 @@
                 </select>
             </div>
         </div>
-        <div>
+        <div id="availableText">
             <h6 class="caps gray mt4">Available Screenings</h6>
         </div>
 
-        <div>
-            <h3 class="caps red">VENUE</h3>
-            <p class="caps mt3">MOVIE TITLE</p>
-            <ul class="list-reset">
-                <li><h5 class="caps">AUTEUR : YEAR</h5></li>
-                <li>Details about the film and/or venue and/or screening</li>
-                <li class="mt1">
+        <div id="output">
+            <div id="singleVenue">
+                <h3 class="caps red">VENUE</h3>
+                <div id="singleFilm">
+                    <p class="caps mt3">MOVIE TITLE</p>
                     <ul class="list-reset">
-                        <li class="inline-block mr1">00:00</li>
-                        <li class="inline-block mr1">01:00</li>
-                        <li class="inline-block mr1">11:15</li>
-                        <li class="inline-block mr1">18:00</li>
-                        <li class="inline-block mr1">22:30</li>
+                        <li><h5 class="caps">AUTEUR : YEAR</h5></li>
+                        <li>Details about the film and/or venue and/or screening</li>
+                        <li class="mt1">
+                            <ul class="list-reset">
+                                <li class="inline-block mr1">00:00</li>
+                                <li class="inline-block mr1">01:00</li>
+                                <li class="inline-block mr1">11:15</li>
+                                <li class="inline-block mr1">18:00</li>
+                                <li class="inline-block mr1">22:30</li>
+                            </ul>
                     </ul>
-            </ul>
+                </div>
+            </div>
         </div>
 
+        <script>
+            Date.prototype.toDateInputValue = (function() {
+                var local = new Date(this);
+                local.setMinutes(this.getMinutes() - this.getTimezoneOffset());
+                return local.toJSON().slice(0,10);
+            });
+
+            $(document).ready( function() {
+                $('#datePicker').val(new Date().toDateInputValue());
+                $('#venuePicker').onchange = function() {showSlate($('#datePicker').val, this.val)};
+            });
+
+
+        </script>
     </body>
 </html>

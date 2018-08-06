@@ -1,6 +1,7 @@
 const cheerio = require('cheerio');
 const jsonframe = require('jsonframe-cheerio');
 const got = require('got');
+const fs = require('fs');
 
 
 async function scrapeScreenSlate(date, venue) {
@@ -26,13 +27,19 @@ async function scrapeScreenSlate(date, venue) {
         venueSelector = $('.screenings__h3___3Mups').filter(function() {
             return $(this).text().trim() === venue;
         }).parent().parent()
+        fs.appendFile(date+'movies.txt', JSON.stringify(venueSelector.scrape(frame, {
+            string: false
+        })))
         console.log(venueSelector.scrape(frame, {
             string: true
         }))
     } else {
         //Return all movies if no venue is entered
         $('.screenings__venue___2EEUR').each(function() {
-            console.log($(this).scrape(frame, {
+            fs.appendFile('movies.txt', JSON.stringify(venueSelector.scrape(frame, {
+                string: false
+            })))
+                console.log($(this).scrape(frame, {
                 string: true
             }))
         })
@@ -42,5 +49,5 @@ async function scrapeScreenSlate(date, venue) {
 // For DEBUG:
 //scrapeScreenSlate('2018-07-16', '')
 //scrapeScreenSlate('2018-07-16', null)
-//scrapeScreenSlate('2018-07-16', 'Anthology Film Archives')
+scrapeScreenSlate('2018-08-06', 'Anthology Film Archives')
 
