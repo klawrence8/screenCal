@@ -1,8 +1,6 @@
 const cheerio = require('cheerio');
 const jsonframe = require('jsonframe-cheerio');
 const got = require('got');
-const fs = require('fs');
-
 
 async function scrapeScreenSlate(date, venue) {
     const url = 'https://www.screenslate.com/' + date
@@ -27,7 +25,7 @@ async function scrapeScreenSlate(date, venue) {
         venueSelector = $('.screenings__h3___3Mups').filter(function() {
             return $(this).text().trim() === venue;
         }).parent().parent()
-        fs.appendFile(date+'movies.txt', JSON.stringify(venueSelector.scrape(frame, {
+        obj.screenings.push(JSON.stringify(venueSelector.scrape(frame, {
             string: false
         })))
         console.log(venueSelector.scrape(frame, {
@@ -36,18 +34,32 @@ async function scrapeScreenSlate(date, venue) {
     } else {
         //Return all movies if no venue is entered
         $('.screenings__venue___2EEUR').each(function() {
-            fs.appendFile('movies.txt', JSON.stringify(venueSelector.scrape(frame, {
-                string: false
-            })))
+            //fs.appendFile('movies.txt', JSON.stringify(venueSelector.scrape(frame, {
+            //    string: false
+            //})))
                 console.log($(this).scrape(frame, {
                 string: true
             }))
         })
     }
 }
+var today = new Date();
+
+Date.prototype.addDays = function(days) {
+    var date = new Date(this.valueOf());
+    date.setDate(date.getDate() + days);
+    return date;
+}
+
+//for (i = 0; i < 14; i++) {   
+    //i = 14;
+    //console.log(today.addDays(i).toJSON().slice(0,10));
+    //    scrapeScreenSlate(today.addDays(i).toJSON().slice(0,10));
+    //}
+
 
 // For DEBUG:
-//scrapeScreenSlate('2018-07-16', '')
-//scrapeScreenSlate('2018-07-16', null)
-scrapeScreenSlate('2018-08-06', 'Anthology Film Archives')
+//scrapeScreenSlate(today.addDays(1).toJSON().slice(0,10), '')
+scrapeScreenSlate('2018-09-16', null)
+//scrapeScreenSlate('2018-08-06', 'Anthology Film Archives')
 
